@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
     <title>Loading...</title>
-    <link rel="canonical" href="https://zphyrj.github.io/mvhsTimer">
+    <link rel="canonical" href="https://zphyrj.github.io/mvhs-timer">
     <style>
       html {
         height: 100%;
@@ -28,11 +28,9 @@
   <body>
     <div id="app"></div>
     <script>
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-        .register('/sw.js')
-        .then(function() { console.log("Service Worker Registered"); });
-      }
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register('/mvhs-timer/sw.js', {scope: '/mvhs-timer/'})
+    }
     </script>
     <script type="module" src="/src/main.js"></script>
   </body>
