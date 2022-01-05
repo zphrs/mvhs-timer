@@ -1,5 +1,5 @@
-CACHE_NAME = 'pwa-starter-template';
-CACHE_VERSION = 'v22';
+CACHE_NAME = 'mvhs-timer';
+CACHE_VERSION = 'V0';
 
 self.addEventListener('install', function(event) {
   self.skipWaiting();
@@ -8,7 +8,7 @@ self.addEventListener('install', function(event) {
       // Enable navigation preloads!
       await self.registration.navigationPreload.enable();
     }
-    await caches.open(CACHE_NAME).then(function(cache) {
+    await caches.open(CACHE_NAME + CACHE_VERSION).then(function(cache) {
       return cache.addAll([
         '/mvhs-timer/',
         '/mvhs-timer/index.html',
@@ -58,7 +58,7 @@ self.addEventListener('fetch', function(event) {
       return cachedResponse;
     }
     const serverResponse = await getFromServer(url);
-    const cache = await caches.open(CACHE_NAME);
+    const cache = await caches.open(CACHE_NAME + CACHE_VERSION);
     const clonedResponse = serverResponse.clone();
     cache.put(url, clonedResponse);
     return serverResponse;
