@@ -12,6 +12,13 @@ export let style = "";
   background: white;
   border-radius: 0.5em;
   display: inline-block;
-  box-shadow: 0 0 5px rgba(127, 127, 127, 1);
+  box-shadow: 0 0 4px black;
+}
+@media (prefers-color-scheme: dark) {
+  .paper {
+    background: #121212;
+    color: white;
+    box-shadow: none;
+  }
 }
 </style>

@@ -112,10 +112,12 @@
   }
 
   function getPeriodColor(period) {
+    let darkmode = !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     if (isNaN(Number.parseInt(period))) {
-      return "white";
+      return !darkmode ? "#fafafa" : "#212121"
     }
-    return "hsl(" + (210 + (period * 15)) + "deg, 100%, 85%)";
+    // check if prefers color scheme dark
+    return "hsl(" + (210 + (period * 15)) + "deg, 100%, "+ (darkmode ? 30 : 85 )+"%)";
   }
 </script>
 
@@ -124,13 +126,10 @@
   <Paper>
     <h1>Loading Classes</h1>
   </Paper>
-  <div class="progress">
-    <Progress continuous></Progress>
-  </div>
   {:then}
   <div class="progress">
     <Progress min="{surrounding.prevTimestamp.getTime()}" value="{time.getTime()}" max="{surrounding.nextTimestamp.getTime()}">
-      <Paper style="mix-blend-mode: difference">
+      <Paper style="background: transparent">
         <h2>time {
             (surrounding.next['inClass'] ? "left in " : "until ") +
             periodToString(surrounding.next.period)
@@ -144,7 +143,7 @@
     <h1>Loading periods for {date.toLocaleDateString()}</h1>
   </Paper>
   {:then periods}
-    <Paper style="width: 100%; max-width: 800px; flex-grow: 0">
+    <Paper style="width: 100%; max-width: 800px; margin: 1em">
       <h1>schedule for {date.toLocaleString('en-US',
         {
           weekday: "long"
@@ -172,18 +171,26 @@ main {
   flex-wrap: wrap;
   box-sizing: border-box;
   align-content: flex-start;
-  justify-content: center;
+  justify-content: space-evenly;
   overflow: auto;
+}
+main > * {
+  margin: 1em;
 }
 .progress {
   display: inline-block;
-  margin: 1em;
   border-radius: 0.5em;
 }
 
 ::selection {
   background-color: #000;
   color: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  ::selection {
+    background-color: #fff;
+    color: #000;
+  }
 }
 .schedule {
   display: grid;

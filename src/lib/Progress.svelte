@@ -2,8 +2,6 @@
   export let min = 0;
   export let value = 0;
   export let max = 1;
-  export let color = '#000';
-  export let backgroundColor = '#fff';
   export let continuous = false;
   console.log(min)
 
@@ -23,9 +21,11 @@
   $: percent = (value - min) / (max - min) * 100;
 </script>
 
-<div class="outer" style="background: {backgroundColor}">
-  <div class="inner" style="background: {color}; transform: scaleX({percent/100})"></div>
-  <slot></slot>
+<div class="outer">
+  <div class="inner" style="transform: scaleX({percent/100})"></div>
+  <div class="slot">
+    <slot></slot>
+  </div>
 </div>
 
 
@@ -35,6 +35,7 @@
     overflow: hidden;
     position: relative;
     border-radius: inherit;
+    background-color: white;
   }
 
   .inner {
@@ -42,8 +43,24 @@
     transform-origin: left;
     height: 100%;
     position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
     transition: transform .75s ease-out;
+    background-color: #b8b8b8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .outer {
+      background-color: #121212;
+    }
+    .inner {
+      background-color: #474747;
+    }
+  }
+
+  .slot {
+    position: relative;
+    z-index: 10;
   }
 </style>
