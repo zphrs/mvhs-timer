@@ -42,8 +42,8 @@ self.addEventListener('fetch', function(event) {
   function getFromServer(url) {
     const response = fetch(url)
       .then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          console.log('loading from cache due to bad response from server ' + event.request.url);
+        if (!response || response.status !== 200) {
+          console.log('loading from cache due to bad response from server ' + event.request.url, response);
           return caches.match(url);
         }
         return response;
