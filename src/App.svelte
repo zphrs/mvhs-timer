@@ -165,20 +165,20 @@
 
 <style>
 main {
-  min-height: 100%;
-  background-color: hsl(271, 20%, 30%);
+  height: 100%;
   padding: 1em;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  align-content: flex-start
+  align-content: flex-start;
+  justify-content: center;
+  overflow: auto;
 }
 .progress {
   display: inline-block;
   margin: 1em;
   border-radius: 0.5em;
-  overflow: hidden;
 }
 
 ::selection {

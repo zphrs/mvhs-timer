@@ -1,5 +1,5 @@
 CACHE_NAME = 'pwa-starter-template';
-CACHE_VERSION = 'v20';
+CACHE_VERSION = 'v21';
 
 self.addEventListener('install', function(event) {
   self.skipWaiting();
@@ -27,22 +27,23 @@ self.addEventListener('activate', () => {
 
 self.addEventListener('fetch', function(event) {
 
-  async function getCachedResponse(url) {
-    const response = await caches.match(url);
-    if (response) {
-      return response;
-    }
-    return new Response('Service worker fetch error', {
-      status: 500,
-      statusText: 'Service worker fetch error'
+  function getCachedResponse(url) {
+    return caches.match(url).then(function (response) {
+      if (response) {
+        return response;
+      }
+      return new Response('Service worker fetch error', {
+        status: 500,
+        statusText: 'Service worker fetch error'
+      });
     });
   }
 
   function getFromServer(url) {
     const response = fetch(url)
       .then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          console.log('loading from cache due to bad response from server ' + event.request.url);
+        if (!response || response.status !== 200) {
+          console.log('loading from cache due to bad response from server ' + event.request.url, response);
           return caches.match(url);
         }
         return response;

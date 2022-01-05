@@ -5,11 +5,11 @@
   "background_color": "#000000",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/mvhs-timer/",
+  "start_url": "/mvhs-timer/",
   "icons": [
     {
-      "src":"/svelte.png",
+      "src":"./svelte.png",
       "sizes":"512x512",
       "type":"image/png"
     }
