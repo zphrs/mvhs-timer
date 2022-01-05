@@ -1,5 +1,5 @@
 CACHE_NAME = 'pwa-starter-template';
-CACHE_VERSION = 'v21';
+CACHE_VERSION = 'v22';
 
 self.addEventListener('install', function(event) {
   self.skipWaiting();
