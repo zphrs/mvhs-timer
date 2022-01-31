@@ -1,5 +1,5 @@
 CACHE_NAME = 'mvhs-timer';
-CACHE_VERSION = 'V1';
+CACHE_VERSION = 'V2';
 
 self.addEventListener('install', function(event) {
   self.skipWaiting();
