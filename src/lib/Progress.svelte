@@ -1,33 +1,30 @@
 <script>
-  export let min = 0;
-  export let value = 0;
-  export let max = 1;
-  export let continuous = false;
+  export let min = 0
+  export let value = 0
+  export let max = 1
+  export let continuous = false
   console.log(min)
 
-  let interval = null;
+  let interval = null
 
   if (continuous) {
     if (!interval)
       interval = window.setInterval(() => {
-        value = value?0:1;
-      }, 1000);
-  }
-  else
-  {
-    window.clearInterval(interval);
+        value = value ? 0 : 1
+      }, 1000)
+  } else {
+    window.clearInterval(interval)
   }
 
-  $: percent = (value - min) / (max - min) * 100;
+  $: percent = ((value - min) / (max - min)) * 100
 </script>
 
 <div class="outer">
-  <div class="inner" style="transform: scaleX({percent/100})"></div>
+  <div class="inner" style="transform: scaleX({percent / 100})" />
   <div class="slot">
-    <slot></slot>
+    <slot />
   </div>
 </div>
-
 
 <style>
   .outer {
@@ -35,7 +32,7 @@
     overflow: hidden;
     position: relative;
     border-radius: inherit;
-    background-color: white;
+    background-color: #ededed;
   }
 
   .inner {
@@ -45,8 +42,9 @@
     position: absolute;
     z-index: 1;
     top: 0;
+    border-radius: 0.5rem;
     left: 0;
-    transition: transform .75s ease-out;
+    transition: transform 0.75s ease-out;
     background-color: #b8b8b8;
   }
 
