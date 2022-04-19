@@ -204,6 +204,15 @@
     padding-right: 1rem;
   }
 
+  h2,
+  h3 {
+    margin: 0.25rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
   ::selection {
     background-color: #000;
     color: #fff;
