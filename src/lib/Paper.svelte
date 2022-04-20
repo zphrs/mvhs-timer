@@ -8,7 +8,7 @@
 
 <style>
   .paper {
-    padding: 1em;
+    padding: 0.5em;
     background: #ededed;
     border-radius: 0.5em;
     display: inline-block;
