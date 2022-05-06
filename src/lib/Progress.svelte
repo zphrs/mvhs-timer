@@ -3,7 +3,6 @@
   export let value = 0
   export let max = 1
   export let continuous = false
-  console.log(min)
 
   let interval = null
 
@@ -45,7 +44,7 @@
     border-radius: 0.5rem;
     left: 0;
     transition: transform 0.75s ease-out;
-    background-color: #b8b8b8;
+    background-color: hsl(0, 0%, 85%);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -53,7 +52,7 @@
       background-color: #121212;
     }
     .inner {
-      background-color: #474747;
+      background-color: hsl(0, 0%, 30%);
     }
   }
 
